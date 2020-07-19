@@ -6,8 +6,8 @@ import Rook from "./Pieces/Rook";
 import Pawn from "./Pieces/Pawn";
 import { File } from "../types";
 
-export default class Game {
-  private pieces = Game.makePieces();
+class Game {
+  private _pieces = Game.makePieces();
   private static makePieces() {
     return [
       // Kings
@@ -46,4 +46,16 @@ export default class Game {
         ),
     ];
   }
+  get pieces() {
+    return this._pieces;
+  }
+
+  get squares() {
+    return new Array(8)
+      .fill(null)
+      .map((_, indexY) =>
+        new Array(8).fill(null).map((_, indexX) => [indexX, indexY])
+      );
+  }
 }
+export default new Game();

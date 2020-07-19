@@ -1,10 +1,10 @@
 import Position from "../Position";
-import { Color, File, Rank } from "../../types";
+import { Color, Range } from "../../types";
 
 export default abstract class Piece {
   protected position: Position;
-  constructor(protected readonly color: Color, file: File, rank: Rank) {
-    this.position = new Position(file, rank);
+  constructor(protected readonly color: Color, x: Range, y: Range) {
+    this.position = new Position(x, y);
   }
   abstract render(): string;
 }
